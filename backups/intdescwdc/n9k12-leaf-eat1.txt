@@ -1,0 +1,10 @@
+Eth1/1        eth    25G     WDC-PROD3-ESXi01 Port 2 - TKT3105114
+Eth1/2        eth    25G     WDC-PROD3-ESXi02 Port 2 - TKT3105114
+Eth1/3        eth    25G     WDC-PROD3-ESXi03 Port 2 - TKT3105114
+Eth1/4        eth    25G     WDC-PROD3-ESXi04 Port 2 - TKT3105114
+Eth1/5        eth    25G     WDC-PROD3-ESXi05 Port 2 - TKT3105114
+Po3                      WDC-PROD3-ESXi01 - TKT3105114
+Po4                      WDC-PROD3-ESXi02 - TKT3105114
+Po5                      WDC-PROD3-ESXi03 - TKT3105114
+Po6                      WDC-PROD3-ESXi04 - TKT3105114
+Po7                      WDC-PROD3-ESXi05 - TKT3105114
