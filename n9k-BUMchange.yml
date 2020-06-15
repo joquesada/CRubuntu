@@ -1,0 +1,22 @@
+---
+- hosts: "n9k-BUMchange"
+  gather_facts: false
+
+  tasks:
+  - name: Remove the VNI on the NVE Interface
+    nxos_vxlan_vtep_vni:
+      interface: nve1
+      vni: "{{ item.vni }}"
+      state: absent
+    with_items: "{{ NEWVNI }}"
+  - name: Configure new BUM for VTEP
+    nxos_vxlan_vtep_vni:
+      interface: nve1
+      vni: "{{ item.vni }}"
+      multicast_group: "{{ item.multicast }}"
+    with_items: "{{ NEWVNI }}"
+  - name: Save running Config
+    nxos_command:
+      commands:
+        - copy run start
+...

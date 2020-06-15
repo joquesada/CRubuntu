@@ -1,0 +1,21 @@
+---
+- hosts: "n9k-vlandelete"
+  gather_facts: false
+
+  tasks:
+  - name: Remove VNI on the NVE Interface
+    nxos_vxlan_vtep_vni:
+      interface: nve1
+      vni: "{{ item.vni }}"
+      state: absent
+    with_items: "{{ DELVNI }}"
+  - name: Remove L2 VLANs
+    nxos_vlan:
+      vlan_id: "{{ item.id }}"
+      state: absent
+    with_items: "{{ DELVNI }}"
+  - name: Save Config
+    nxos_command:
+      commands:
+        - copy run start
+...
