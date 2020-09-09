@@ -3,21 +3,11 @@
   gather_facts: false
 
   tasks:
-  - name: Create checkpoint
-    nxos_command:
-      commands:
-       - checkpoint Jun20
-  - name: Remove VNI on the NVE Interface
-    nxos_vxlan_vtep_vni:
-      interface: nve1
-      vni: "{{ item.oldvni }}"
-      state: absent
-    with_items: "{{ VNI }}"
-  - name: Remove L2 VLANs
+  - name: New Description for TEMP VLANs
     nxos_vlan:
       vlan_id: "{{ item.id }}"
-      state: absent
-    with_items: "{{ VNI }}"
+      name: "{{ item.name }}"
+    with_items: "{{ VLANDESC }}"
   - name: New L2 VNI for the VLANs
     nxos_vlan:
       vlan_id: "{{ item.id }}"
@@ -34,5 +24,5 @@
   - name: Save Config
     nxos_command:
       commands:
-       - copy run start
+        - copy run start
 ...

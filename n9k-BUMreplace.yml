@@ -1,0 +1,12 @@
+---
+- hosts: "n9k-BUMreplace"
+  gather_facts: false
+
+  tasks:
+  - name: Update BUM on the remaining VLANs, Task 2->Configure new BUM
+    nxos_vxlan_vtep_vni:
+      interface: nve1
+      vni: "{{ item.vni }}"
+      multicast_group: "{{ item.multicast }}"
+    with_items: "{{ BUM }}"
+...
